@@ -68,14 +68,14 @@ function songMenu(id){
 }
 function openPlaylist(i){const ids=playlists[i].songIds; currentFiltered=songs.filter(s=>ids.includes(s.id)); renderSongs(currentFiltered); document.querySelector(".songs-section").scrollIntoView({behavior:"smooth"}); toast(`${playlists[i].name} खुल गई`)}
 function playById(id){const i=songs.findIndex(s=>s.id===id);if(i<0)return;currentIndex=i;currentSong=songs[i];updatePlayerInfo();const vid=videoId(currentSong.youtube);if(!vid){toast("इस demo song के लिए YouTube URL जोड़ें");return}loadVideo(vid)}
-function updatePlayerInfo(){if(!currentSong)return;$("#playerTitle").textContent=currentSong.title;$("#playerMeta").textContent=`${currentSong.artist||"Unknown"} • ${currentSong.movie||"YouTube"}`;$("#playerFav").textContent=favorites.has(currentSong.id)?"♥":"♡"}
+function updatePlayerInfo(){ return; }
 function loadVideo(vid){
  if(!player && window.YT && YT.Player){player=new YT.Player("youtubePlayer",{height:"1",width:"1",videoId:vid,playerVars:{playsinline:1,controls:0,rel:0},events:{onReady:e=>{isReady=true;e.target.playVideo();startTimer()},onStateChange:e=>{if(e.data===YT.PlayerState.ENDED) nextSong()}}})}
  else if(player){player.loadVideoById(vid);player.playVideo();startTimer()}
  else {window.pendingVideo=vid;toast("YouTube player तैयार हो रहा है...")}
 }
 window.onYouTubeIframeAPIReady=()=>{if(window.pendingVideo)loadVideo(window.pendingVideo)}
-function startTimer(){clearInterval(timer);timer=setInterval(()=>{if(!player||!isReady)return;const d=player.getDuration()||0,t=player.getCurrentTime()||0;$("#currentTime").textContent=time(t);$("#duration").textContent=time(d);$("#progress").value=d?(t/d)*100:0},500)}
+function startTimer(){ return; }
 function time(s){s=Math.floor(s||0);return `${Math.floor(s/60)}:${String(s%60).padStart(2,"0")}`}
 function nextSong(){if(!songs.length)return;let n;if(shuffle)n=Math.floor(Math.random()*songs.length);else n=(currentIndex+1)%songs.length;if(repeat&&currentIndex>=0)n=currentIndex;playById(songs[n].id)}
 function prevSong(){if(!songs.length)return;let n=(currentIndex-1+songs.length)%songs.length;playById(songs[n].id)}
@@ -128,10 +128,8 @@ $("#addYoutubeBtn").onclick=()=>openModal("#youtubeModal");$("#addYoutubeHero").
 $("#closeModal").onclick=()=>closeModal("#youtubeModal");$("#cancelAdd").onclick=()=>closeModal("#youtubeModal");$("#saveYoutube").onclick=addYoutube;
 $("#newPlaylistBtn").onclick=()=>openModal("#playlistModal");$("#closePlaylistModal").onclick=()=>closeModal("#playlistModal");$("#cancelPlaylist").onclick=()=>closeModal("#playlistModal");$("#savePlaylist").onclick=createPlaylist;
 $("#playerFav").onclick=()=>currentSong&&toggleFav(currentSong.id);
-$("#playBtn").onclick=()=>{if(!player){if(currentSong)playById(currentSong.id);else playById(songs[0].id);return}const st=player.getPlayerState();if(st===YT.PlayerState.PLAYING){player.pauseVideo();$("#playBtn").textContent="▶"}else{player.playVideo();$("#playBtn").textContent="Ⅱ"}};
-$("#nextBtn").onclick=nextSong;$("#prevBtn").onclick=prevSong;$("#shuffleBtn").onclick=()=>{shuffle=!shuffle;$("#shuffleBtn").style.color=shuffle?"#f3cf70":""};$("#repeatBtn").onclick=()=>{repeat=!repeat;$("#repeatBtn").style.color=repeat?"#f3cf70":""};
-$("#muteBtn").onclick=()=>{if(!player)return;player.isMuted()?player.unMute():player.mute();$("#muteBtn").textContent=player.isMuted()?"🔇":"🔊"};
-$("#progress").oninput=e=>{if(player&&player.getDuration())player.seekTo((+e.target.value/100)*player.getDuration(),true)};
-$("#radioBtn").onclick=()=>{toast("Radio mode: आपकी current library से songs चलाए जाएंगे");playById(songs[Math.floor(Math.random()*songs.length)].id)};
+$("#playBtn").onclick=()=>{if(!player){if(currentSong)playById(currentSong.id);else playById(songs[0].id);return}const playing=(window.YT&&player.getPlayerState&&player.getPlayerState()===YT.PlayerState.PLAYING);if(playing){player.pauseVideo();$("#playBtn").textContent="▶"}else{player.playVideo();$("#playBtn").textContent="Ⅱ"}};
+$("#nextBtn").onclick=nextSong;$("#prevBtn").onclick=prevSong;$("#radioBtn").onclick=()=>{toast("Radio mode: आपकी current library से songs चलाए जाएंगे");playById(songs[Math.floor(Math.random()*songs.length)].id)};
 $("#mobileMenu").onclick=()=>$("#sidebar").classList.toggle("open");
 renderSongs();renderTop();renderPlaylists();
+                              
