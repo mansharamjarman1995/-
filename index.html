@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b1722" />
+  <title>सफ़रनामा — Old Songs & Memories</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <button class="mobile-menu" id="mobileMenu">☰</button>
+    <a class="brand" href="#">
+      <span class="bus">🚌</span>
+      <span><strong>सफ़रनामा</strong><small>जहाँ हर सफ़र, एक पुरानी याद बन जाए... ♪</small></span>
+    </a>
+    <div class="search-wrap">
+      <input id="searchInput" type="search" placeholder="गाना, सिंगर या फ़िल्म खोजें..." />
+      <button id="searchBtn">⌕</button>
+    </div>
+    <nav class="topnav">
+      <button class="nav-active" data-section="home">⌂ <span>Home</span></button>
+      <button data-section="playlists">☷ <span>Playlists</span></button>
+      <button data-section="artists">♟ <span>Artists</span></button>
+      <button data-section="decades">◉ <span>Decades</span></button>
+      <button data-section="favorites">♡ <span>Favorites</span></button>
+    </nav>
+  </header>
+
+  <aside class="sidebar" id="sidebar">
+    <button class="side-active" data-section="home">⌂ <span>Home</span></button>
+    <button data-section="trending">♬ <span>Trending</span></button>
+    <button data-section="playlists">☷ <span>Playlists</span></button>
+    <button data-section="artists">♟ <span>Artists</span></button>
+    <button data-section="decades">◉ <span>Decades</span></button>
+    <button data-section="favorites">♥ <span>My Favorites</span></button>
+    <button data-section="recent">◷ <span>Recently Played</span></button>
+    <button id="radioBtn">◉ <span>Radio</span></button>
+    <button data-section="about">ⓘ <span>About</span></button>
+    <div class="sidebar-note">Old Songs...<br>Good Vibes...<br>Long Drives...<br>Better Life... ♡</div>
+  </aside>
+
+  <main class="main">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">पुराने गीत • पुरानी यादें • हमारा सफ़र</p>
+        <h1>सफ़रनामा</h1>
+        <h2>जहाँ हर सफ़र, एक पुरानी याद बन जाए...</h2>
+        <p>आपकी पसंद के evergreen songs को एक जगह सुनें, playlist बनाएं और YouTube से अपने गाने भी जोड़ें।</p>
+        <button class="primary" id="addYoutubeHero">＋ YouTube से गाना जोड़ें</button>
+      </div>
+      <div class="road-art">🚌<span>♫</span></div>
+    </section>
+
+    <section class="chips">
+      <button data-filter="romantic">❤️ Romantic</button>
+      <button data-filter="sad">☹ Sad</button>
+      <button data-filter="night">☾ Night Songs</button>
+      <button data-filter="evergreen">★ Evergreen</button>
+      <button data-filter="travel">🚌 Travel Songs</button>
+      <button data-filter="all">▣ All Old Songs</button>
+    </section>
+
+    <section class="section" id="trendingSection">
+      <div class="section-head"><h2>🎧 Trending Playlists</h2><button class="link-btn" data-section="playlists">See All →</button></div>
+      <div class="playlist-grid">
+        <button class="playlist-card" data-filter="romantic"><div class="cover romantic-cover">💕</div><b>Romantic Old Songs</b><small>1,245+ songs</small></button>
+        <button class="playlist-card" data-filter="sad"><div class="cover sad-cover">☹</div><b>Sad Old Songs</b><small>1,090+ songs</small></button>
+        <button class="playlist-card" data-filter="night"><div class="cover night-cover">🌙</div><b>Night Melodies</b><small>890+ songs</small></button>
+        <button class="playlist-card" data-filter="evergreen"><div class="cover evergreen-cover">★</div><b>Evergreen Hits</b><small>2,000+ songs</small></button>
+        <button class="playlist-card" data-filter="travel"><div class="cover travel-cover">🚌</div><b>Songs for Long Drive</b><small>765+ songs</small></button>
+      </div>
+    </section>
+
+    <section class="section" id="artistsSection">
+      <div class="section-head"><h2>✣ Legendary Artists</h2></div>
+      <div class="artist-row">
+        <button class="artist"><span>🎙️</span><b>Kishore Kumar</b><small>1,250+ songs</small></button>
+        <button class="artist"><span>🎙️</span><b>Lata Mangeshkar</b><small>1,300+ songs</small></button>
+        <button class="artist"><span>🎙️</span><b>Mohammed Rafi</b><small>1,180+ songs</small></button>
+        <button class="artist"><span>🎙️</span><b>Mukesh</b><small>950+ songs</small></button>
+        <button class="artist"><span>🎙️</span><b>Asha Bhosle</b><small>900+ songs</small></button>
+        <button class="artist"><span>🎙️</span><b>Manna Dey</b><small>640+ songs</small></button>
+      </div>
+    </section>
+
+    <section class="section" id="decadesSection">
+      <div class="section-head"><h2>📻 Songs by Decade</h2></div>
+      <div class="decade-grid">
+        <button class="decade" data-filter="all"><strong>1950s</strong><small>Golden Era</small><em>1,200+ songs</em></button>
+        <button class="decade" data-filter="all"><strong>1960s</strong><small>Classic Hits</small><em>1,500+ songs</em></button>
+        <button class="decade" data-filter="all"><strong>1970s</strong><small>Evergreen</small><em>1,800+ songs</em></button>
+        <button class="decade" data-filter="all"><strong>1980s</strong><small>Melodious</small><em>1,600+ songs</em></button>
+        <button class="decade" data-filter="all"><strong>1990s</strong><small>Filmy Hits</small><em>1,400+ songs</em></button>
+        <button class="decade" data-filter="all"><strong>2000s</strong><small>Millennium</small><em>1,000+ songs</em></button>
+      </div>
+    </section>
+
+    <section class="section songs-section" id="songsSection">
+      <div class="section-head"><h2>🎵 Songs Library</h2><button class="primary small" id="addYoutubeBtn">＋ Add YouTube Song</button></div>
+      <div id="songList" class="song-list"></div>
+      <div id="emptyState" class="empty hidden">कोई गाना नहीं मिला। Search बदलकर देखें या YouTube से नया गाना जोड़ें।</div>
+    </section>
+
+    <section class="section custom-section">
+      <div class="section-head"><h2>📂 मेरी Playlists</h2><button class="primary small" id="newPlaylistBtn">＋ New Playlist</button></div>
+      <div id="customPlaylists" class="custom-playlists"></div>
+    </section>
+
+    <section class="section about" id="aboutSection">
+      <h2>🚌 सफ़रनामा</h2>
+      <p>पुराने गीतों और यादों के लिए आपकी personal music library. आप YouTube के किसी भी song/video का link डालकर उसे अपनी playlist में save कर सकते हैं।</p>
+      <p class="muted">नोट: YouTube videos वेबसाइट के official embed player में चलेंगे; copyrighted audio को आपकी वेबसाइट पर डाउनलोड या re-host नहीं किया जाता।</p>
+    </section>
+  </main>
+
+  <aside class="rightbar">
+    <div class="quote">“कुछ गाने सिर्फ सुने नहीं जाते...<br>उन्हें जिया जाता है...” ❤️</div>
+    <div class="top10">
+      <h3>📊 Top 10 Today</h3>
+      <div id="topList"></div>
+    </div>
+  </aside>
+
+  <div class="player" id="player">
+    <div class="player-song">
+      <div class="thumb" id="playerThumb">🎵</div>
+      <div><b id="playerTitle">कोई गाना चुनें</b><small id="playerMeta">सफ़रनामा</small></div>
+      <button id="playerFav">♡</button>
+    </div>
+    <div class="controls">
+      <button id="shuffleBtn">⤨</button><button id="prevBtn">|◀</button>
+      <button class="play-main" id="playBtn">▶</button><button id="nextBtn">▶|</button><button id="repeatBtn">↻</button>
+    </div>
+    <div class="progress-wrap"><span id="currentTime">0:00</span><input id="progress" type="range" min="0" max="100" value="0"><span id="duration">0:00</span></div>
+    <button class="volume" id="muteBtn">🔊</button>
+    <div id="youtubePlayer" class="youtube-player"></div>
+  </div>
+
+  <div class="modal hidden" id="youtubeModal">
+    <div class="modal-card">
+      <button class="close" id="closeModal">×</button>
+      <h2>🎬 YouTube से गाना जोड़ें</h2>
+      <p>YouTube video का link paste करें।</p>
+      <input id="ytUrl" placeholder="https://www.youtube.com/watch?v=..." />
+      <input id="ytTitle" placeholder="गाने का नाम (optional)" />
+      <input id="ytArtist" placeholder="Singer / Artist (optional)" />
+      <div class="modal-actions"><button class="secondary" id="cancelAdd">Cancel</button><button class="primary" id="saveYoutube">Add Song</button></div>
+      <small class="muted">केवल YouTube URL/embed को save किया जाएगा; video YouTube player में चलेगा।</small>
+    </div>
+  </div>
+
+  <div class="modal hidden" id="playlistModal">
+    <div class="modal-card">
+      <button class="close" id="closePlaylistModal">×</button>
+      <h2>📂 नई Playlist</h2>
+      <input id="playlistName" placeholder="जैसे: रात का सफ़र" />
+      <div class="modal-actions"><button class="secondary" id="cancelPlaylist">Cancel</button><button class="primary" id="savePlaylist">Create</button></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="script.js"></script>
+</body>
+</html>
